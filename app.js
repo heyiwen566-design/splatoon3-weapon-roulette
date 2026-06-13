@@ -1,9 +1,7 @@
-const ASSET_BASE =
-  "https://raw.githubusercontent.com/sendou-ink/sendou.ink/main/public/static-assets/img/main-weapons";
-const SUB_ASSET_BASE =
-  "https://raw.githubusercontent.com/sendou-ink/sendou.ink/main/public/static-assets/img/sub-weapons";
-const SPECIAL_ASSET_BASE =
-  "https://raw.githubusercontent.com/sendou-ink/sendou.ink/main/public/static-assets/img/special-weapons";
+const ASSET_BASE = "assets/weapons";
+const SUB_ASSET_BASE = "assets/sub-weapons";
+const SPECIAL_ASSET_BASE = "assets/special-weapons";
+const ASSET_EXT = "webp";
 
 const categories = [
   {
@@ -515,10 +513,13 @@ const knownKits = {
   11: { sub: 13, special: 7 },
   20: { sub: 2, special: 12 },
   21: { sub: 1, special: 14 },
+  22: { sub: 11, special: 5 },
   30: { sub: 5, special: 13 },
   31: { sub: 3, special: 6 },
+  32: { sub: 2, special: 19 },
   40: { sub: 1, special: 1 },
   41: { sub: 0, special: 14 },
+  42: { sub: 2, special: 17 },
   45: { sub: 1, special: 1 },
   46: { sub: 0, special: 14 },
   47: { sub: 1, special: 1 },
@@ -528,10 +529,13 @@ const knownKits = {
   61: { sub: 7, special: 16 },
   70: { sub: 12, special: 12 },
   71: { sub: 1, special: 6 },
+  72: { sub: 0, special: 4 },
   80: { sub: 3, special: 8 },
   81: { sub: 4, special: 17 },
+  82: { sub: 12, special: 15 },
   90: { sub: 12, special: 8 },
   91: { sub: 2, special: 5 },
+  92: { sub: 2, special: 18 },
   100: { sub: 9, special: 9 },
   101: { sub: 10, special: 14 },
   200: { sub: 0, special: 3 },
@@ -539,6 +543,7 @@ const knownKits = {
   205: { sub: 0, special: 3 },
   210: { sub: 7, special: 2 },
   211: { sub: 9, special: 18 },
+  212: { sub: 8, special: 12 },
   220: { sub: 1, special: 7 },
   221: { sub: 0, special: 17 },
   230: { sub: 0, special: 1 },
@@ -547,39 +552,49 @@ const knownKits = {
   241: { sub: 13, special: 10 },
   250: { sub: 11, special: 10 },
   251: { sub: 12, special: 9 },
+  252: { sub: 1, special: 15 },
   260: { sub: 3, special: 17 },
   261: { sub: 2, special: 6 },
   300: { sub: 6, special: 12 },
   301: { sub: 2, special: 11 },
+  302: { sub: 0, special: 10 },
   310: { sub: 9, special: 15 },
   311: { sub: 4, special: 2 },
+  312: { sub: 1, special: 14 },
   400: { sub: 4, special: 1 },
   401: { sub: 7, special: 19 },
   1000: { sub: 7, special: 3 },
   1001: { sub: 2, special: 14 },
+  1002: { sub: 5, special: 16 },
   1010: { sub: 6, special: 2 },
   1011: { sub: 8, special: 17 },
   1015: { sub: 6, special: 2 },
   1020: { sub: 3, special: 15 },
   1021: { sub: 0, special: 16 },
+  1022: { sub: 9, special: 9 },
   1030: { sub: 10, special: 4 },
   1031: { sub: 1, special: 19 },
   1040: { sub: 4, special: 8 },
   1041: { sub: 12, special: 5 },
+  1042: { sub: 13, special: 18 },
   1100: { sub: 0, special: 9 },
   1101: { sub: 10, special: 11 },
   1110: { sub: 1, special: 3 },
   1111: { sub: 8, special: 5 },
+  1112: { sub: 7, special: 17 },
   1115: { sub: 1, special: 3 },
   1120: { sub: 6, special: 7 },
   1121: { sub: 9, special: 4 },
+  1122: { sub: 4, special: 1 },
   2000: { sub: 9, special: 2 },
   2001: { sub: 7, special: 3 },
   2010: { sub: 0, special: 8 },
   2011: { sub: 4, special: 14 },
+  2012: { sub: 3, special: 12 },
   2015: { sub: 0, special: 8 },
   2020: { sub: 0, special: 8 },
   2021: { sub: 4, special: 14 },
+  2022: { sub: 3, special: 12 },
   2030: { sub: 10, special: 7 },
   2031: { sub: 8, special: 17 },
   2040: { sub: 10, special: 7 },
@@ -595,6 +610,7 @@ const knownKits = {
   3005: { sub: 0, special: 14 },
   3010: { sub: 11, special: 10 },
   3011: { sub: 5, special: 15 },
+  3012: { sub: 0, special: 19 },
   3020: { sub: 5, special: 6 },
   3021: { sub: 9, special: 1 },
   3030: { sub: 3, special: 5 },
@@ -603,13 +619,16 @@ const knownKits = {
   3041: { sub: 4, special: 11 },
   3050: { sub: 1, special: 13 },
   3051: { sub: 8, special: 9 },
+  3052: { sub: 6, special: 12 },
   4000: { sub: 2, special: 11 },
   4001: { sub: 11, special: 2 },
+  4002: { sub: 8, special: 1 },
   4010: { sub: 3, special: 7 },
   4011: { sub: 9, special: 17 },
   4015: { sub: 3, special: 7 },
   4020: { sub: 7, special: 6 },
   4021: { sub: 10, special: 19 },
+  4022: { sub: 3, special: 2 },
   4030: { sub: 5, special: 10 },
   4031: { sub: 9, special: 5 },
   4040: { sub: 9, special: 5 },
@@ -618,13 +637,16 @@ const knownKits = {
   4051: { sub: 0, special: 12 },
   5000: { sub: 8, special: 15 },
   5001: { sub: 13, special: 13 },
+  5002: { sub: 0, special: 9 },
   5010: { sub: 1, special: 12 },
   5011: { sub: 6, special: 14 },
+  5012: { sub: 5, special: 2 },
   5015: { sub: 1, special: 12 },
   5020: { sub: 4, special: 6 },
   5021: { sub: 9, special: 1 },
   5030: { sub: 0, special: 7 },
   5031: { sub: 8, special: 16 },
+  5032: { sub: 9, special: 19 },
   5040: { sub: 7, special: 13 },
   5041: { sub: 3, special: 11 },
   5050: { sub: 10, special: 9 },
@@ -634,22 +656,28 @@ const knownKits = {
   6005: { sub: 3, special: 14 },
   6010: { sub: 8, special: 8 },
   6011: { sub: 10, special: 14 },
+  6012: { sub: 11, special: 16 },
   6020: { sub: 10, special: 13 },
   6021: { sub: 13, special: 19 },
+  6022: { sub: 6, special: 9 },
   6030: { sub: 12, special: 2 },
   6031: { sub: 11, special: 6 },
   7010: { sub: 11, special: 9 },
   7011: { sub: 3, special: 16 },
+  7012: { sub: 12, special: 10 },
   7015: { sub: 11, special: 9 },
   7020: { sub: 6, special: 4 },
   7021: { sub: 2, special: 13 },
+  7022: { sub: 13, special: 6 },
   7030: { sub: 9, special: 11 },
   7031: { sub: 1, special: 7 },
   8000: { sub: 2, special: 3 },
   8001: { sub: 11, special: 12 },
+  8002: { sub: 7, special: 6 },
   8005: { sub: 2, special: 3 },
   8010: { sub: 13, special: 11 },
   8011: { sub: 8, special: 4 },
+  8012: { sub: 6, special: 1 },
   8020: { sub: 1, special: 2 },
   8021: { sub: 3, special: 10 },
 };
@@ -669,6 +697,8 @@ const state = {
   audioContext: null,
   lastTickIndex: null,
 };
+const preloadedImages = new Set();
+let preloadTimer = null;
 
 const wheel = document.querySelector("#wheel");
 const ctx = wheel.getContext("2d");
@@ -695,7 +725,7 @@ function weaponFromId(id) {
     category: category.name,
     categoryLabel: category.label,
     color: category.color,
-    image: `${ASSET_BASE}/${id}.avif`,
+    image: `${ASSET_BASE}/${id}.${ASSET_EXT}`,
     kit: knownKits[id] ?? null,
   };
 }
@@ -884,8 +914,10 @@ function refreshControls() {
 }
 
 function refreshWheel() {
-  drawWheel(pool());
+  const weapons = pool();
+  drawWheel(weapons);
   updateMeta();
+  scheduleImagePreload(weapons);
 }
 
 function drawWheel(weapons) {
@@ -1044,6 +1076,35 @@ function showResult(weapon) {
   flashResult();
 }
 
+function scheduleImagePreload(weapons) {
+  const urls = [
+    ...weapons.map((weapon) => weapon.image),
+    ...Object.keys(subWeapons).map((id) => `${SUB_ASSET_BASE}/${id}.${ASSET_EXT}`),
+    ...Object.keys(specialWeapons).map((id) => `${SPECIAL_ASSET_BASE}/${id}.${ASSET_EXT}`),
+  ].filter((url) => !preloadedImages.has(url));
+  if (urls.length === 0) return;
+  if (preloadTimer) window.clearTimeout(preloadTimer);
+  preloadTimer = window.setTimeout(() => preloadImages(urls), 350);
+}
+
+function preloadImages(urls) {
+  const queue = [...new Set(urls)];
+  const loadNext = () => {
+    const batch = queue.splice(0, 6);
+    for (const url of batch) {
+      preloadedImages.add(url);
+      const image = new Image();
+      image.decoding = "async";
+      image.src = url;
+    }
+    if (queue.length > 0) {
+      const idle = window.requestIdleCallback ?? ((callback) => window.setTimeout(callback, 120));
+      idle(loadNext);
+    }
+  };
+  loadNext();
+}
+
 function renderKit(weapon) {
   kitDisplay.innerHTML = "";
   if (!weapon.kit) {
@@ -1051,14 +1112,19 @@ function renderKit(weapon) {
     return;
   }
   kitDisplay.append(
-    kitChip("副武器", zhSubWeapons[weapon.kit.sub], subWeapons[weapon.kit.sub], `${SUB_ASSET_BASE}/${weapon.kit.sub}.avif`),
+    kitChip(
+      "副武器",
+      zhSubWeapons[weapon.kit.sub],
+      subWeapons[weapon.kit.sub],
+      `${SUB_ASSET_BASE}/${weapon.kit.sub}.${ASSET_EXT}`,
+    ),
   );
   kitDisplay.append(
     kitChip(
       "大招",
       zhSpecialWeapons[weapon.kit.special],
       specialWeapons[weapon.kit.special],
-      `${SPECIAL_ASSET_BASE}/${weapon.kit.special}.avif`,
+      `${SPECIAL_ASSET_BASE}/${weapon.kit.special}.${ASSET_EXT}`,
     ),
   );
 }
@@ -1186,3 +1252,4 @@ renderFilters();
 renderHistory();
 drawWheel(pool());
 updateMeta();
+scheduleImagePreload(pool());

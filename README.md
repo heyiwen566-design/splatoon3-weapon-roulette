@@ -1,6 +1,6 @@
 # 斯普拉遁 3 随机武器转盘
 
-一个静态网页原型，用 sendou.ink 公开仓库里的 Splatoon 3 主武器贴图做随机转盘。
+一个静态网页原型，用 sendou.ink 公开仓库里的 Splatoon 3 武器贴图做随机转盘。
 
 ## 使用
 
@@ -14,13 +14,26 @@ python3 -m http.server 4173
 
 ## 数据来源
 
-武器 ID、分类、英文名称和贴图路径参考 `sendou-ink/sendou.ink`：
+武器 ID、分类、英文名称和原始贴图参考 `sendou-ink/sendou.ink`：
 
 - `locales/en/weapons.json`
 - `app/modules/in-game-lists/weapon-ids.ts`
 - `public/static-assets/img/main-weapons/*.avif`
+- `public/static-assets/img/sub-weapons/*.avif`
+- `public/static-assets/img/special-weapons/*.avif`
+- Ver.10.0.0 新武器套装参考 `https://splatoon.com.cn/update-history/detail/34`
 
-当前页面直接从 GitHub raw URL 加载贴图；离线时仍可抽选和显示武器名称。
+当前页面使用本项目内的 WebP 图标：
+
+- `assets/weapons/*.webp`
+- `assets/sub-weapons/*.webp`
+- `assets/special-weapons/*.webp`
+
+如需重新拉取并转换贴图，运行：
+
+```sh
+/Users/yiwen/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 scripts/download_assets.py
+```
 
 ## 当前功能
 
