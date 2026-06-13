@@ -194,10 +194,7 @@ canvas {
 }
 
 .weapon-art span {
-  position: absolute;
-  font-size: 3rem;
-  font-weight: 900;
-  color: rgba(255, 255, 255, 0.28);
+  display: none;
 }
 
 #resultName {
@@ -207,9 +204,18 @@ canvas {
   overflow-wrap: anywhere;
 }
 
+#resultName span {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.56em;
+  line-height: 1.2;
+}
+
 #resultMeta {
   margin: 8px 0 0;
   color: var(--muted);
+  font-size: 0.88rem;
 }
 
 .kit-display {
@@ -236,6 +242,19 @@ canvas {
   width: 26px;
   height: 26px;
   object-fit: contain;
+}
+
+.kit-chip strong {
+  display: block;
+  font-weight: 850;
+}
+
+.kit-chip span span {
+  display: block;
+  margin-top: 2px;
+  color: rgba(247, 251, 255, 0.88);
+  font-weight: 600;
+  font-size: 0.9em;
 }
 
 .kit-chip.missing {

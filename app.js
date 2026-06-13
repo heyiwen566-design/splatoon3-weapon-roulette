@@ -9,7 +9,7 @@ const categories = [
   {
     name: "SHOOTERS",
     label: "射击枪",
-    color: "#b9ff38",
+    color: "#d7ff42",
     ids: [
       0, 1, 10, 11, 20, 21, 22, 30, 31, 32, 40, 41, 42, 45, 46, 47, 50,
       51, 60, 61, 70, 71, 72, 80, 81, 82, 90, 91, 92, 100, 101, 300,
@@ -25,19 +25,19 @@ const categories = [
   {
     name: "ROLLERS",
     label: "滚筒",
-    color: "#31e7ff",
+    color: "#39b8ff",
     ids: [1000, 1001, 1002, 1010, 1011, 1015, 1020, 1021, 1022, 1030, 1031, 1040, 1041, 1042],
   },
   {
     name: "BRUSHES",
     label: "画笔",
-    color: "#ffd84a",
+    color: "#ffc247",
     ids: [1100, 1101, 1110, 1111, 1112, 1115, 1120, 1121, 1122],
   },
   {
     name: "CHARGERS",
     label: "蓄力狙击",
-    color: "#7ef58f",
+    color: "#6ff3c1",
     ids: [2000, 2001, 2010, 2011, 2012, 2015, 2020, 2021, 2022, 2030, 2031, 2040, 2041, 2050, 2051, 2060, 2061, 2070, 2071],
   },
   {
@@ -49,31 +49,31 @@ const categories = [
   {
     name: "SPLATLINGS",
     label: "旋转枪",
-    color: "#5fb7ff",
+    color: "#7a8cff",
     ids: [4000, 4001, 4002, 4010, 4011, 4015, 4020, 4021, 4022, 4030, 4031, 4040, 4041, 4050, 4051],
   },
   {
     name: "DUALIES",
     label: "双枪",
-    color: "#ff6fcb",
+    color: "#ff6f95",
     ids: [5000, 5001, 5002, 5010, 5015, 5011, 5012, 5020, 5021, 5030, 5031, 5032, 5040, 5041, 5050, 5051],
   },
   {
     name: "BRELLAS",
     label: "防空伞",
-    color: "#92f0ff",
+    color: "#45d9f4",
     ids: [6000, 6001, 6005, 6010, 6011, 6012, 6020, 6021, 6022, 6030, 6031],
   },
   {
     name: "STRINGERS",
     label: "弓",
-    color: "#c8ff57",
+    color: "#44e69d",
     ids: [7010, 7011, 7012, 7015, 7020, 7021, 7022, 7030, 7031],
   },
   {
     name: "SPLATANAS",
     label: "刮水刀",
-    color: "#ffeb70",
+    color: "#ffe25f",
     ids: [8000, 8001, 8002, 8005, 8010, 8011, 8012, 8020, 8021],
   },
 ];
@@ -254,6 +254,182 @@ const names = {
   8021: "Charcoal Decavitator",
 };
 
+const zhNames = {
+  0: "广域标记枪",
+  1: "广域标记枪 新型",
+  10: "新叶射击枪",
+  11: "枫叶射击枪",
+  20: "窄域标记枪",
+  21: "窄域标记枪 新型",
+  22: "窄域标记枪GECK",
+  30: "专业模型枪MG",
+  31: "专业模型枪RG",
+  32: "专业模型枪 彩",
+  40: "斯普拉射击枪",
+  41: "斯普拉射击枪 联名",
+  42: "斯普拉射击枪 煌",
+  45: "英雄射击枪 复制",
+  46: "章鱼射击枪 复制",
+  47: "秩序射击枪 复制",
+  50: ".52加仑",
+  51: ".52加仑 装饰",
+  60: "N-ZAP85",
+  61: "N-ZAP89",
+  70: "顶尖射击枪",
+  71: "顶尖射击枪 联名",
+  72: "顶尖射击枪FRZN",
+  80: ".96加仑",
+  81: ".96加仑 装饰",
+  82: ".96加仑 爪",
+  90: "喷射清洁枪",
+  91: "喷射清洁枪 改装",
+  92: "喷射清洁枪COBR",
+  100: "太空射击枪",
+  101: "太空射击枪 联名",
+  200: "新星爆破枪",
+  201: "新星爆破枪 新型",
+  205: "秩序爆破枪 复制",
+  210: "火热爆破枪",
+  211: "火热爆破枪 改装",
+  212: "火热爆破枪 艳",
+  220: "远距爆破枪",
+  221: "远距爆破枪 改装",
+  230: "冲涂爆破枪",
+  231: "冲涂爆破枪 新型",
+  240: "快速爆破枪",
+  241: "快速爆破枪 装饰",
+  250: "快速爆破枪 精英",
+  251: "快速爆破枪 精英装饰",
+  252: "快速爆破枪 精英WNTR",
+  260: "S-BLAST92",
+  261: "S-BLAST91",
+  300: "L3卷管枪",
+  301: "L3卷管枪D",
+  302: "L3卷管枪 箔",
+  310: "H3卷管枪",
+  311: "H3卷管枪D",
+  312: "H3卷管枪SNAK",
+  400: "开瓶喷泉枪",
+  401: "开瓶喷泉枪 金属箔",
+  1000: "碳纤维滚筒",
+  1001: "碳纤维滚筒 装饰",
+  1002: "碳纤维滚筒ANGL",
+  1010: "斯普拉滚筒",
+  1011: "斯普拉滚筒 联名",
+  1015: "秩序滚筒 复制",
+  1020: "电动马达滚筒",
+  1021: "电动马达滚筒 高磁波",
+  1022: "电动马达滚筒 冥",
+  1030: "可变式滚筒",
+  1031: "可变式滚筒 金属箔",
+  1040: "宽滚筒",
+  1041: "宽滚筒 联名",
+  1042: "宽滚筒 惑",
+  1100: "巴勃罗",
+  1101: "巴勃罗·新艺术",
+  1110: "北斋",
+  1111: "北斋·新艺术",
+  1112: "北斋 彗",
+  1115: "秩序排刷 复制",
+  1120: "文森",
+  1121: "文森·新艺术",
+  1122: "文森BRNZ",
+  2000: "鱿快洁α",
+  2001: "鱿快洁β",
+  2010: "斯普拉蓄力狙击枪",
+  2011: "斯普拉蓄力狙击枪 联名",
+  2012: "斯普拉蓄力狙击枪FRST",
+  2015: "秩序蓄力狙击枪 复制",
+  2020: "斯普拉准星枪",
+  2021: "斯普拉准星枪 联名",
+  2022: "斯普拉准星枪FRST",
+  2030: "公升4K",
+  2031: "公升4K 改装",
+  2040: "4K准星枪",
+  2041: "4K准星枪 改装",
+  2050: "14式竹筒枪·甲",
+  2051: "14式竹筒枪·乙",
+  2060: "高压油管枪",
+  2061: "高压油管枪 改装",
+  2070: "R-PEN/5H",
+  2071: "R-PEN/5B",
+  3000: "飞溅泼桶",
+  3001: "飞溅泼桶 装饰",
+  3005: "秩序泼桶 复制",
+  3010: "洗笔桶",
+  3011: "洗笔桶·新艺术",
+  3012: "洗笔桶ASH",
+  3020: "回旋泼桶",
+  3021: "回旋泼桶 新型",
+  3030: "满溢泡澡泼桶",
+  3031: "满溢泡澡泼桶 装饰",
+  3040: "爆炸泼桶",
+  3041: "爆炸泼桶 改装",
+  3050: "墨瀑淋",
+  3051: "墨瀑淋D",
+  3052: "墨瀑淋 角",
+  4000: "斯普拉旋转枪",
+  4001: "斯普拉旋转枪 联名",
+  4002: "斯普拉旋转枪PYTN",
+  4010: "桶装旋转枪",
+  4011: "桶装旋转枪 装饰",
+  4015: "秩序旋转枪 复制",
+  4020: "消防栓旋转枪",
+  4021: "消防栓旋转枪 改装",
+  4022: "消防栓旋转枪 压",
+  4030: "圆珠笔",
+  4031: "圆珠笔·新艺术",
+  4040: "鹦鹉螺号47",
+  4041: "鹦鹉螺号79",
+  4050: "审查者",
+  4051: "审查者·新艺术",
+  5000: "溅镀枪",
+  5001: "溅镀枪·新艺术",
+  5002: "溅镀枪OWL",
+  5010: "斯普拉机动枪",
+  5011: "斯普拉机动枪 联名",
+  5012: "斯普拉机动枪 耀",
+  5015: "秩序机动枪 复制",
+  5020: "开尔文525",
+  5021: "开尔文525 装饰",
+  5030: "双重清洁枪",
+  5031: "双重清洁枪 改装",
+  5032: "双重清洁枪 蹄",
+  5040: "四重弹跳手枪 黑",
+  5041: "四重弹跳手枪 白",
+  5050: "灭熄FF",
+  5051: "灭熄FF 改装",
+  6000: "遮阳防空伞",
+  6001: "遮阳防空伞 姐妹",
+  6005: "秩序防空伞 复制",
+  6010: "露营防空伞",
+  6011: "露营防空伞 姐妹",
+  6012: "露营防空伞CREM",
+  6020: "特工配件",
+  6021: "特工配件 姐妹",
+  6022: "特工配件 缭",
+  6030: "24式可替换伞·甲",
+  6031: "24式可替换伞·乙",
+  7010: "三发猎鱼弓",
+  7011: "三发猎鱼弓 联名",
+  7012: "三发猎鱼弓 灯",
+  7015: "秩序猎鱼弓 复制",
+  7020: "LACT-450",
+  7021: "LACT-450 装饰",
+  7022: "LACT-450MILK",
+  7030: "邦普V",
+  7031: "邦普V 改装",
+  8000: "工作刮水刀",
+  8001: "工作刮水刀·新艺术",
+  8002: "工作刮水刀 封",
+  8005: "秩序刮水刀 复制",
+  8010: "雨刷刮水刀",
+  8011: "雨刷刮水刀 装饰",
+  8012: "雨刷刮水刀RUST",
+  8020: "巨齿刮水刀 薄荷",
+  8021: "巨齿刮水刀 墨黑",
+};
+
 const subWeapons = {
   0: "Splat Bomb",
   1: "Suction Bomb",
@@ -269,6 +445,23 @@ const subWeapons = {
   11: "Toxic Mist",
   12: "Angle Shooter",
   13: "Torpedo",
+};
+
+const zhSubWeapons = {
+  0: "斯普拉炸弹",
+  1: "吸盘炸弹",
+  2: "快速炸弹",
+  3: "洒墨器",
+  4: "斯普拉防护墙",
+  5: "碳酸炸弹",
+  6: "冰壶炸弹",
+  7: "机器人炸弹",
+  8: "跳跃信标",
+  9: "定点侦测器",
+  10: "墨汁陷阱",
+  11: "毒雾",
+  12: "标线器",
+  13: "鱼雷",
 };
 
 const specialWeapons = {
@@ -291,6 +484,28 @@ const specialWeapons = {
   17: "Kraken Royale",
   18: "Triple Splashdown",
   19: "Splattercolor Screen",
+};
+
+const zhSpecialWeapons = {
+  1: "终极发射",
+  2: "巨大防护罩",
+  3: "触手喷射",
+  4: "多重导弹",
+  5: "墨雨云",
+  6: "赞气弹",
+  7: "弹跳声呐",
+  8: "吸墨机",
+  9: "喇叭镭射5.1ch",
+  10: "喷射背包",
+  11: "终极印章",
+  12: "螃蟹坦克",
+  13: "鲨鱼坐骑",
+  14: "三重龙卷风",
+  15: "能量站",
+  16: "诱饵烟花",
+  17: "帝王鱿鱼",
+  18: "终极着陆",
+  19: "浮墨幕墙",
 };
 
 const knownKits = {
@@ -476,6 +691,7 @@ function weaponFromId(id) {
   return {
     id,
     name: names[id] ?? `Weapon ${id}`,
+    zhName: zhNames[id] ?? names[id] ?? `Weapon ${id}`,
     category: category.name,
     categoryLabel: category.label,
     color: category.color,
@@ -494,6 +710,12 @@ function pool() {
 }
 
 function renderFilters() {
+  const openCategories = new Set(
+    [...categoryFilters.querySelectorAll(".category-panel[open]")].map((panel) => panel.dataset.category),
+  );
+  const openFamilies = new Set(
+    [...categoryFilters.querySelectorAll(".weapon-family[open]")].map((panel) => panel.dataset.family),
+  );
   categoryFilters.innerHTML = "";
   const query = normalizeText(state.search);
   for (const category of categories) {
@@ -502,7 +724,8 @@ function renderFilters() {
     const enabledCategoryCount = categoryWeapons.filter((weapon) => state.enabledWeapons.has(weapon.id)).length;
     const details = document.createElement("details");
     details.className = "category-panel";
-    details.open = Boolean(query);
+    details.dataset.category = category.name;
+    details.open = Boolean(query) || openCategories.has(category.name);
     details.hidden = query && visibleWeapons.length === 0;
     details.innerHTML = `
       <summary>
@@ -522,7 +745,7 @@ function renderFilters() {
       refreshControls();
     });
     const list = details.querySelector(".weapon-list");
-    for (const family of weaponFamilies(visibleWeapons)) list.append(weaponFamily(category, family, query));
+    for (const family of weaponFamilies(visibleWeapons)) list.append(weaponFamily(category, family, query, openFamilies));
     if (query) {
       const enabledVisibleCount = visibleWeapons.filter((weapon) => state.enabledWeapons.has(weapon.id)).length;
       details.querySelector("summary span:last-child").textContent = `${enabledVisibleCount}/${visibleWeapons.length}`;
@@ -557,8 +780,8 @@ function weaponOption(weapon) {
     <input type="checkbox" ${state.enabledWeapons.has(weapon.id) ? "checked" : ""} />
     <img src="${weapon.image}" alt="" loading="lazy" />
     <span>
-      <strong>${weapon.name}</strong>
-      <span>${weapon.categoryLabel} · ${baseFamilyName(weapon.name)}</span>
+      <strong>${weapon.zhName}</strong>
+      <span>${weapon.name}</span>
     </span>
   `;
   const input = label.querySelector("input");
@@ -571,20 +794,22 @@ function weaponOption(weapon) {
   return label;
 }
 
-function weaponFamily(category, weapons, query) {
+function weaponFamily(category, weapons, query, openFamilies) {
   const base = weapons.find((weapon) => weapon.id % 10 === 0) ?? weapons[0];
   const enabledCount = weapons.filter((weapon) => state.enabledWeapons.has(weapon.id)).length;
+  const familyId = `${category.name}:${base.id - (base.id % 10)}`;
   const details = document.createElement("details");
   details.className = "weapon-family";
-  details.open = Boolean(query);
+  details.dataset.family = familyId;
+  details.open = Boolean(query) || openFamilies.has(familyId);
   details.innerHTML = `
     <summary>
       <span class="family-title">
         <input type="checkbox" ${enabledCount === weapons.length ? "checked" : ""} />
         <img src="${base.image}" alt="" loading="lazy" />
         <span>
-          <strong>${baseFamilyName(base.name)}</strong>
-          <span>${category.label} · ${weapons.length} 把</span>
+          <strong>${baseFamilyName(base.zhName)}</strong>
+          <span>${baseFamilyName(base.name)} · ${weapons.length} 把</span>
         </span>
       </span>
       <span>${enabledCount}/${weapons.length}</span>
@@ -628,13 +853,15 @@ function syncCategorySelection(category) {
 function weaponMatches(weapon, query) {
   return (
     (!query ||
-      normalizeText(`${weapon.name} ${weapon.categoryLabel} ${baseFamilyName(weapon.name)}`).includes(query)) &&
+      normalizeText(
+        `${weapon.name} ${weapon.zhName} ${weapon.categoryLabel} ${baseFamilyName(weapon.name)} ${baseFamilyName(weapon.zhName)}`,
+      ).includes(query)) &&
     (!state.hideBrandedWeapons || weapon.id % 10 === 0)
   );
 }
 
 function normalizeText(value) {
-  return value.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  return value.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim();
 }
 
 function baseFamilyName(name) {
@@ -713,7 +940,7 @@ function drawWheel(weapons) {
     ctx.font = wheelLabelFont(weapons.length);
     ctx.textAlign = "right";
     ctx.textBaseline = "middle";
-    ctx.fillText(shortName(weapon.name, weapons.length), radius - 18, 0);
+    ctx.fillText(shortName(weapon.zhName, weapons.length), radius - 18, 0);
     ctx.restore();
   });
 
@@ -805,12 +1032,12 @@ function normalizeRadians(value) {
 
 function showResult(weapon) {
   state.currentWeapon = weapon;
-  resultName.textContent = weapon.name;
+  resultName.innerHTML = `${weapon.zhName}<span>${weapon.name}</span>`;
   resultMeta.textContent = `${weapon.categoryLabel} · ID ${weapon.id} · 当前池子 ${pool().length} 把`;
   renderKit(weapon);
-  imageFallback.textContent = weapon.name.slice(0, 1);
+  imageFallback.textContent = weapon.zhName.slice(0, 1);
   resultImage.src = weapon.image;
-  resultImage.alt = weapon.name;
+  resultImage.alt = weapon.zhName;
   state.history.unshift(weapon);
   state.history = state.history.slice(0, 8);
   renderHistory();
@@ -823,16 +1050,23 @@ function renderKit(weapon) {
     kitDisplay.innerHTML = `<span class="kit-chip missing">套装数据待补全</span>`;
     return;
   }
-  const subName = subWeapons[weapon.kit.sub];
-  const specialName = specialWeapons[weapon.kit.special];
-  kitDisplay.append(kitChip("副武器", subName, `${SUB_ASSET_BASE}/${weapon.kit.sub}.avif`));
-  kitDisplay.append(kitChip("大招", specialName, `${SPECIAL_ASSET_BASE}/${weapon.kit.special}.avif`));
+  kitDisplay.append(
+    kitChip("副武器", zhSubWeapons[weapon.kit.sub], subWeapons[weapon.kit.sub], `${SUB_ASSET_BASE}/${weapon.kit.sub}.avif`),
+  );
+  kitDisplay.append(
+    kitChip(
+      "大招",
+      zhSpecialWeapons[weapon.kit.special],
+      specialWeapons[weapon.kit.special],
+      `${SPECIAL_ASSET_BASE}/${weapon.kit.special}.avif`,
+    ),
+  );
 }
 
-function kitChip(label, name, src) {
+function kitChip(label, zhName, enName, src) {
   const chip = document.createElement("span");
   chip.className = "kit-chip";
-  chip.innerHTML = `<img src="${src}" alt="" /><span>${label}: ${name}</span>`;
+  chip.innerHTML = `<img src="${src}" alt="" /><span><strong>${label}: ${zhName}</strong><span>${enName}</span></span>`;
   return chip;
 }
 
@@ -896,9 +1130,9 @@ function renderHistory() {
   for (const weapon of state.history) {
     const item = document.createElement("li");
     const kit = weapon.kit
-      ? ` · ${subWeapons[weapon.kit.sub]} + ${specialWeapons[weapon.kit.special]}`
+      ? ` · ${zhSubWeapons[weapon.kit.sub]} + ${zhSpecialWeapons[weapon.kit.special]}`
       : "";
-    item.innerHTML = `<strong>${weapon.name}</strong> <span>${weapon.categoryLabel}${kit}</span>`;
+    item.innerHTML = `<strong>${weapon.zhName}</strong> <span>${weapon.name}${kit}</span>`;
     historyEl.append(item);
   }
 }
