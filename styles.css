@@ -59,12 +59,23 @@ button {
 }
 
 .wheel-panel {
+  position: relative;
   min-height: calc(100vh - 40px);
   border-radius: 8px;
   padding: clamp(18px, 3vw, 34px);
   display: grid;
   align-content: center;
   gap: 20px;
+}
+
+.wheel-panel.flash::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 8px;
+  background: radial-gradient(circle at center, rgba(255, 216, 74, 0.28), transparent 56%);
+  animation: resultFlash 760ms ease-out;
 }
 
 .heading {
@@ -160,6 +171,10 @@ canvas {
   background: rgba(255, 255, 255, 0.06);
 }
 
+.result.hit {
+  animation: resultPop 620ms cubic-bezier(0.2, 1.4, 0.25, 1);
+}
+
 .weapon-art {
   position: relative;
   display: grid;
@@ -194,6 +209,36 @@ canvas {
 
 #resultMeta {
   margin: 8px 0 0;
+  color: var(--muted);
+}
+
+.kit-display {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.kit-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  font-size: 0.88rem;
+}
+
+.kit-chip img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
+.kit-chip.missing {
   color: var(--muted);
 }
 
@@ -241,25 +286,138 @@ canvas {
   background: rgba(255, 255, 255, 0.07);
 }
 
-.category-grid {
+.category-grid,
+.weapon-list {
   display: grid;
   gap: 9px;
 }
 
-.category {
+.category-panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel-2);
+  overflow: hidden;
+}
+
+.category-panel[hidden] {
+  display: none;
+}
+
+.category-panel > summary {
+  min-height: 46px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
   padding: 10px 12px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--panel-2);
+  cursor: pointer;
+  list-style: none;
 }
 
-.category span {
+.category-panel > summary::-webkit-details-marker {
+  display: none;
+}
+
+.category-panel > summary::after {
+  content: "▾";
+  color: var(--muted);
+  transform: rotate(-90deg);
+  transition: transform 160ms ease;
+}
+
+.category-panel[open] > summary::after {
+  transform: rotate(0);
+}
+
+.category-toggle {
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.category-panel > summary > span:last-child {
   color: var(--muted);
   font-size: 0.88rem;
+}
+
+.category-panel .weapon-list {
+  max-height: none;
+  padding: 0 10px 10px;
+}
+
+.weapon-family {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.035);
+  overflow: hidden;
+}
+
+.weapon-family summary {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 9px 10px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.weapon-family summary::-webkit-details-marker {
+  display: none;
+}
+
+.weapon-family summary::after {
+  content: "▾";
+  color: var(--muted);
+  transform: rotate(-90deg);
+  transition: transform 160ms ease;
+}
+
+.weapon-family[open] summary::after {
+  transform: rotate(0);
+}
+
+.family-title {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 18px 44px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+}
+
+.family-title img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.family-title strong,
+.family-title span span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.family-title span span {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.weapon-family summary > span:last-child {
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.family-weapons {
+  display: grid;
+  gap: 7px;
+  padding: 0 9px 9px 36px;
 }
 
 .toggle {
@@ -267,6 +425,75 @@ canvas {
   align-items: center;
   gap: 10px;
   color: var(--text);
+}
+
+.search-input {
+  width: 100%;
+  min-height: 42px;
+  margin-bottom: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0 12px;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.07);
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: rgba(185, 255, 56, 0.62);
+  box-shadow: 0 0 0 3px rgba(185, 255, 56, 0.12);
+}
+
+.weapon-tools {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.weapon-tools button {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 10px;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.weapon-option {
+  display: grid;
+  grid-template-columns: 18px 38px minmax(0, 1fr);
+  align-items: center;
+  gap: 9px;
+  padding: 8px 9px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.weapon-option[hidden] {
+  display: none;
+}
+
+.weapon-option img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.weapon-option strong,
+.weapon-option span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.weapon-option span {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 0.78rem;
 }
 
 input[type="checkbox"] {
@@ -335,5 +562,31 @@ input[type="checkbox"] {
 
   .spin-button {
     font-size: 1.05rem;
+  }
+}
+
+@keyframes resultPop {
+  0% {
+    transform: scale(0.98);
+    border-color: rgba(255, 216, 74, 0.82);
+  }
+  52% {
+    transform: scale(1.025);
+  }
+  100% {
+    transform: scale(1);
+    border-color: var(--line);
+  }
+}
+
+@keyframes resultFlash {
+  0% {
+    opacity: 0;
+  }
+  28% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }

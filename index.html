@@ -31,6 +31,7 @@
             <p class="result-label">抽到</p>
             <h2 id="resultName">按“开始”抽一把武器</h2>
             <p id="resultMeta">当前池子包含 0 把武器</p>
+            <div id="kitDisplay" class="kit-display" aria-label="武器套装"></div>
           </div>
         </div>
       </section>
@@ -41,6 +42,11 @@
             <h2>武器池</h2>
             <button id="selectAll" type="button">全选</button>
           </div>
+          <input id="weaponSearch" class="search-input" type="search" placeholder="搜索武器或家族，比如 Pro、Splatana" />
+          <div class="weapon-tools">
+            <button id="includeVisible" type="button">选中可见</button>
+            <button id="excludeVisible" type="button">排除可见</button>
+          </div>
           <div id="categoryFilters" class="category-grid"></div>
         </section>
 
@@ -48,6 +54,10 @@
           <label class="toggle">
             <input id="hideBrandedWeapons" type="checkbox" />
             <span>隐藏贴牌武器</span>
+          </label>
+          <label class="toggle">
+            <input id="soundEnabled" type="checkbox" checked />
+            <span>开启转盘音效</span>
           </label>
           <label class="toggle">
             <input id="avoidRepeat" type="checkbox" checked />

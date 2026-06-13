@@ -1,5 +1,9 @@
 const ASSET_BASE =
   "https://raw.githubusercontent.com/sendou-ink/sendou.ink/main/public/static-assets/img/main-weapons";
+const SUB_ASSET_BASE =
+  "https://raw.githubusercontent.com/sendou-ink/sendou.ink/main/public/static-assets/img/sub-weapons";
+const SPECIAL_ASSET_BASE =
+  "https://raw.githubusercontent.com/sendou-ink/sendou.ink/main/public/static-assets/img/special-weapons";
 
 const categories = [
   {
@@ -250,14 +254,205 @@ const names = {
   8021: "Charcoal Decavitator",
 };
 
+const subWeapons = {
+  0: "Splat Bomb",
+  1: "Suction Bomb",
+  2: "Burst Bomb",
+  3: "Sprinkler",
+  4: "Splash Wall",
+  5: "Fizzy Bomb",
+  6: "Curling Bomb",
+  7: "Autobomb",
+  8: "Squid Beakon",
+  9: "Point Sensor",
+  10: "Ink Mine",
+  11: "Toxic Mist",
+  12: "Angle Shooter",
+  13: "Torpedo",
+};
+
+const specialWeapons = {
+  1: "Trizooka",
+  2: "Big Bubbler",
+  3: "Zipcaster",
+  4: "Tenta Missiles",
+  5: "Ink Storm",
+  6: "Booyah Bomb",
+  7: "Wave Breaker",
+  8: "Ink Vac",
+  9: "Killer Wail 5.1",
+  10: "Inkjet",
+  11: "Ultra Stamp",
+  12: "Crab Tank",
+  13: "Reefslider",
+  14: "Triple Inkstrike",
+  15: "Tacticooler",
+  16: "Super Chump",
+  17: "Kraken Royale",
+  18: "Triple Splashdown",
+  19: "Splattercolor Screen",
+};
+
+const knownKits = {
+  0: { sub: 6, special: 11 },
+  1: { sub: 8, special: 9 },
+  10: { sub: 0, special: 2 },
+  11: { sub: 13, special: 7 },
+  20: { sub: 2, special: 12 },
+  21: { sub: 1, special: 14 },
+  30: { sub: 5, special: 13 },
+  31: { sub: 3, special: 6 },
+  40: { sub: 1, special: 1 },
+  41: { sub: 0, special: 14 },
+  45: { sub: 1, special: 1 },
+  46: { sub: 0, special: 14 },
+  47: { sub: 1, special: 1 },
+  50: { sub: 4, special: 9 },
+  51: { sub: 6, special: 19 },
+  60: { sub: 1, special: 15 },
+  61: { sub: 7, special: 16 },
+  70: { sub: 12, special: 12 },
+  71: { sub: 1, special: 6 },
+  80: { sub: 3, special: 8 },
+  81: { sub: 4, special: 17 },
+  90: { sub: 12, special: 8 },
+  91: { sub: 2, special: 5 },
+  100: { sub: 9, special: 9 },
+  101: { sub: 10, special: 14 },
+  200: { sub: 0, special: 3 },
+  201: { sub: 5, special: 11 },
+  205: { sub: 0, special: 3 },
+  210: { sub: 7, special: 2 },
+  211: { sub: 9, special: 18 },
+  220: { sub: 1, special: 7 },
+  221: { sub: 0, special: 17 },
+  230: { sub: 0, special: 1 },
+  231: { sub: 6, special: 16 },
+  240: { sub: 10, special: 14 },
+  241: { sub: 13, special: 10 },
+  250: { sub: 11, special: 10 },
+  251: { sub: 12, special: 9 },
+  260: { sub: 3, special: 17 },
+  261: { sub: 2, special: 6 },
+  300: { sub: 6, special: 12 },
+  301: { sub: 2, special: 11 },
+  310: { sub: 9, special: 15 },
+  311: { sub: 4, special: 2 },
+  400: { sub: 4, special: 1 },
+  401: { sub: 7, special: 19 },
+  1000: { sub: 7, special: 3 },
+  1001: { sub: 2, special: 14 },
+  1010: { sub: 6, special: 2 },
+  1011: { sub: 8, special: 17 },
+  1015: { sub: 6, special: 2 },
+  1020: { sub: 3, special: 15 },
+  1021: { sub: 0, special: 16 },
+  1030: { sub: 10, special: 4 },
+  1031: { sub: 1, special: 19 },
+  1040: { sub: 4, special: 8 },
+  1041: { sub: 12, special: 5 },
+  1100: { sub: 0, special: 9 },
+  1101: { sub: 10, special: 11 },
+  1110: { sub: 1, special: 3 },
+  1111: { sub: 8, special: 5 },
+  1115: { sub: 1, special: 3 },
+  1120: { sub: 6, special: 7 },
+  1121: { sub: 9, special: 4 },
+  2000: { sub: 9, special: 2 },
+  2001: { sub: 7, special: 3 },
+  2010: { sub: 0, special: 8 },
+  2011: { sub: 4, special: 14 },
+  2015: { sub: 0, special: 8 },
+  2020: { sub: 0, special: 8 },
+  2021: { sub: 4, special: 14 },
+  2030: { sub: 10, special: 7 },
+  2031: { sub: 8, special: 17 },
+  2040: { sub: 10, special: 7 },
+  2041: { sub: 8, special: 17 },
+  2050: { sub: 7, special: 9 },
+  2051: { sub: 11, special: 16 },
+  2060: { sub: 13, special: 4 },
+  2061: { sub: 5, special: 11 },
+  2070: { sub: 3, special: 15 },
+  2071: { sub: 4, special: 8 },
+  3000: { sub: 0, special: 14 },
+  3001: { sub: 12, special: 3 },
+  3005: { sub: 0, special: 14 },
+  3010: { sub: 11, special: 10 },
+  3011: { sub: 5, special: 15 },
+  3020: { sub: 5, special: 6 },
+  3021: { sub: 9, special: 1 },
+  3030: { sub: 3, special: 5 },
+  3031: { sub: 12, special: 17 },
+  3040: { sub: 9, special: 5 },
+  3041: { sub: 4, special: 11 },
+  3050: { sub: 1, special: 13 },
+  3051: { sub: 8, special: 9 },
+  4000: { sub: 2, special: 11 },
+  4001: { sub: 11, special: 2 },
+  4010: { sub: 3, special: 7 },
+  4011: { sub: 9, special: 17 },
+  4015: { sub: 3, special: 7 },
+  4020: { sub: 7, special: 6 },
+  4021: { sub: 10, special: 19 },
+  4030: { sub: 5, special: 10 },
+  4031: { sub: 9, special: 5 },
+  4040: { sub: 9, special: 5 },
+  4041: { sub: 1, special: 14 },
+  4050: { sub: 6, special: 15 },
+  4051: { sub: 0, special: 12 },
+  5000: { sub: 8, special: 15 },
+  5001: { sub: 13, special: 13 },
+  5010: { sub: 1, special: 12 },
+  5011: { sub: 6, special: 14 },
+  5015: { sub: 1, special: 12 },
+  5020: { sub: 4, special: 6 },
+  5021: { sub: 9, special: 1 },
+  5030: { sub: 0, special: 7 },
+  5031: { sub: 8, special: 16 },
+  5040: { sub: 7, special: 13 },
+  5041: { sub: 3, special: 11 },
+  5050: { sub: 10, special: 9 },
+  5051: { sub: 2, special: 14 },
+  6000: { sub: 3, special: 14 },
+  6001: { sub: 7, special: 10 },
+  6005: { sub: 3, special: 14 },
+  6010: { sub: 8, special: 8 },
+  6011: { sub: 10, special: 14 },
+  6020: { sub: 10, special: 13 },
+  6021: { sub: 13, special: 19 },
+  6030: { sub: 12, special: 2 },
+  6031: { sub: 11, special: 6 },
+  7010: { sub: 11, special: 9 },
+  7011: { sub: 3, special: 16 },
+  7015: { sub: 11, special: 9 },
+  7020: { sub: 6, special: 4 },
+  7021: { sub: 2, special: 13 },
+  7030: { sub: 9, special: 11 },
+  7031: { sub: 1, special: 7 },
+  8000: { sub: 2, special: 3 },
+  8001: { sub: 11, special: 12 },
+  8005: { sub: 2, special: 3 },
+  8010: { sub: 13, special: 11 },
+  8011: { sub: 8, special: 4 },
+  8020: { sub: 1, special: 2 },
+  8021: { sub: 3, special: 10 },
+};
+
 const state = {
   selectedCategories: new Set(categories.map((category) => category.name)),
+  enabledWeapons: new Set(Object.keys(names).map(Number)),
   hideBrandedWeapons: false,
   avoidRepeat: true,
+  soundEnabled: true,
+  search: "",
   rotation: 0,
   spinning: false,
+  highlightId: null,
   currentWeapon: null,
   history: [],
+  audioContext: null,
+  lastTickIndex: null,
 };
 
 const wheel = document.querySelector("#wheel");
@@ -267,10 +462,14 @@ const resultImage = document.querySelector("#resultImage");
 const imageFallback = document.querySelector("#imageFallback");
 const resultName = document.querySelector("#resultName");
 const resultMeta = document.querySelector("#resultMeta");
+const kitDisplay = document.querySelector("#kitDisplay");
 const categoryFilters = document.querySelector("#categoryFilters");
 const historyEl = document.querySelector("#history");
 const hideBrandedWeapons = document.querySelector("#hideBrandedWeapons");
+const soundEnabled = document.querySelector("#soundEnabled");
 const avoidRepeat = document.querySelector("#avoidRepeat");
+const weaponSearch = document.querySelector("#weaponSearch");
+const allWeapons = Object.keys(names).map(Number).map(weaponFromId);
 
 function weaponFromId(id) {
   const category = categories.find((item) => item.ids.includes(id));
@@ -281,6 +480,7 @@ function weaponFromId(id) {
     categoryLabel: category.label,
     color: category.color,
     image: `${ASSET_BASE}/${id}.avif`,
+    kit: knownKits[id] ?? null,
   };
 }
 
@@ -289,34 +489,176 @@ function pool() {
     .filter((category) => state.selectedCategories.has(category.name))
     .flatMap((category) => category.ids)
     .filter((id) => !state.hideBrandedWeapons || id % 10 === 0)
+    .filter((id) => state.enabledWeapons.has(id))
     .map(weaponFromId);
 }
 
 function renderFilters() {
   categoryFilters.innerHTML = "";
+  const query = normalizeText(state.search);
   for (const category of categories) {
-    const label = document.createElement("label");
-    label.className = "category";
-    label.innerHTML = `
-      <input type="checkbox" value="${category.name}" checked />
-      <strong>${category.label}</strong>
-      <span>${category.ids.length}</span>
+    const categoryWeapons = category.ids.map(weaponFromId);
+    const visibleWeapons = categoryWeapons.filter((weapon) => weaponMatches(weapon, query));
+    const enabledCategoryCount = categoryWeapons.filter((weapon) => state.enabledWeapons.has(weapon.id)).length;
+    const details = document.createElement("details");
+    details.className = "category-panel";
+    details.open = Boolean(query);
+    details.hidden = query && visibleWeapons.length === 0;
+    details.innerHTML = `
+      <summary>
+        <span class="category-toggle">
+          <input type="checkbox" value="${category.name}" ${state.selectedCategories.has(category.name) ? "checked" : ""} />
+          <strong>${category.label}</strong>
+        </span>
+        <span>${enabledCategoryCount}/${category.ids.length}</span>
+      </summary>
+      <div class="weapon-list" aria-label="${category.label}武器"></div>
     `;
-    const input = label.querySelector("input");
+    const input = details.querySelector("summary input");
+    input.indeterminate = enabledCategoryCount > 0 && enabledCategoryCount < category.ids.length;
+    input.addEventListener("click", (event) => event.stopPropagation());
     input.addEventListener("change", () => {
-      if (input.checked) state.selectedCategories.add(category.name);
-      else state.selectedCategories.delete(category.name);
-      drawWheel(pool());
-      updateMeta();
+      setCategoryEnabled(category, input.checked);
+      refreshControls();
     });
-    categoryFilters.append(label);
+    const list = details.querySelector(".weapon-list");
+    for (const family of weaponFamilies(visibleWeapons)) list.append(weaponFamily(category, family, query));
+    if (query) {
+      const enabledVisibleCount = visibleWeapons.filter((weapon) => state.enabledWeapons.has(weapon.id)).length;
+      details.querySelector("summary span:last-child").textContent = `${enabledVisibleCount}/${visibleWeapons.length}`;
+    }
+    categoryFilters.append(details);
+  }
+}
+
+function setCategoryEnabled(category, enabled) {
+  if (enabled) {
+    state.selectedCategories.add(category.name);
+    for (const id of category.ids) state.enabledWeapons.add(id);
+  } else {
+    state.selectedCategories.delete(category.name);
+    for (const id of category.ids) state.enabledWeapons.delete(id);
   }
 }
 
 function updateMeta() {
   const weapons = pool();
-  resultMeta.textContent = `当前池子包含 ${weapons.length} 把武器`;
+  resultMeta.textContent = state.currentWeapon
+    ? `${state.currentWeapon.categoryLabel} · ID ${state.currentWeapon.id} · 当前池子 ${weapons.length} 把`
+    : `当前池子包含 ${weapons.length} 把武器`;
   spinButton.disabled = weapons.length === 0 || state.spinning;
+}
+
+function weaponOption(weapon) {
+  const label = document.createElement("label");
+  label.className = "weapon-option";
+  label.dataset.weaponId = String(weapon.id);
+  label.innerHTML = `
+    <input type="checkbox" ${state.enabledWeapons.has(weapon.id) ? "checked" : ""} />
+    <img src="${weapon.image}" alt="" loading="lazy" />
+    <span>
+      <strong>${weapon.name}</strong>
+      <span>${weapon.categoryLabel} · ${baseFamilyName(weapon.name)}</span>
+    </span>
+  `;
+  const input = label.querySelector("input");
+  input.addEventListener("change", () => {
+    if (input.checked) state.enabledWeapons.add(weapon.id);
+    else state.enabledWeapons.delete(weapon.id);
+    syncCategorySelection(categories.find((item) => item.name === weapon.category));
+    refreshControls();
+  });
+  return label;
+}
+
+function weaponFamily(category, weapons, query) {
+  const base = weapons.find((weapon) => weapon.id % 10 === 0) ?? weapons[0];
+  const enabledCount = weapons.filter((weapon) => state.enabledWeapons.has(weapon.id)).length;
+  const details = document.createElement("details");
+  details.className = "weapon-family";
+  details.open = Boolean(query);
+  details.innerHTML = `
+    <summary>
+      <span class="family-title">
+        <input type="checkbox" ${enabledCount === weapons.length ? "checked" : ""} />
+        <img src="${base.image}" alt="" loading="lazy" />
+        <span>
+          <strong>${baseFamilyName(base.name)}</strong>
+          <span>${category.label} · ${weapons.length} 把</span>
+        </span>
+      </span>
+      <span>${enabledCount}/${weapons.length}</span>
+    </summary>
+    <div class="family-weapons"></div>
+  `;
+  const input = details.querySelector("summary input");
+  input.indeterminate = enabledCount > 0 && enabledCount < weapons.length;
+  input.addEventListener("click", (event) => event.stopPropagation());
+  input.addEventListener("change", () => {
+    for (const weapon of weapons) {
+      if (input.checked) state.enabledWeapons.add(weapon.id);
+      else state.enabledWeapons.delete(weapon.id);
+    }
+    syncCategorySelection(category);
+    refreshControls();
+  });
+  const list = details.querySelector(".family-weapons");
+  for (const weapon of weapons) list.append(weaponOption(weapon));
+  return details;
+}
+
+function weaponFamilies(weapons) {
+  const groups = new Map();
+  for (const weapon of weapons) {
+    const baseId = weapon.id - (weapon.id % 10);
+    if (!groups.has(baseId)) groups.set(baseId, []);
+    groups.get(baseId).push(weapon);
+  }
+  return [...groups.entries()]
+    .sort(([a], [b]) => a - b)
+    .map(([, group]) => group.sort((a, b) => a.id - b.id));
+}
+
+function syncCategorySelection(category) {
+  const enabledCount = category.ids.filter((id) => state.enabledWeapons.has(id)).length;
+  if (enabledCount > 0) state.selectedCategories.add(category.name);
+  else state.selectedCategories.delete(category.name);
+}
+
+function weaponMatches(weapon, query) {
+  return (
+    (!query ||
+      normalizeText(`${weapon.name} ${weapon.categoryLabel} ${baseFamilyName(weapon.name)}`).includes(query)) &&
+    (!state.hideBrandedWeapons || weapon.id % 10 === 0)
+  );
+}
+
+function normalizeText(value) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+}
+
+function baseFamilyName(name) {
+  return name
+    .replace(/^(Custom|Neo|Forge|Foil|Zink|Annaki|Enperry|Sorella|Tenta Sorella|Inkline|Gold|Light|Dark)\s+/i, "")
+    .replace(/\s+(Deco|Nouveau|Replica|Express|D|Mk I|Mk II)$/i, "")
+    .replace(/^(Z\+F|Krak-On)\s+/i, "")
+    .trim();
+}
+
+function visibleWeaponIds() {
+  return [...categoryFilters.querySelectorAll(".category-panel:not([hidden]) .weapon-option")].map((item) =>
+    Number(item.dataset.weaponId),
+  );
+}
+
+function refreshControls() {
+  renderFilters();
+  refreshWheel();
+}
+
+function refreshWheel() {
+  drawWheel(pool());
+  updateMeta();
 }
 
 function drawWheel(weapons) {
@@ -355,17 +697,24 @@ function drawWheel(weapons) {
     ctx.strokeStyle = "rgba(8, 16, 20, 0.25)";
     ctx.lineWidth = 2;
     ctx.stroke();
-
-    if (weapons.length <= 80) {
+    if (weapon.id === state.highlightId) {
       ctx.save();
-      ctx.rotate(start + slice / 2);
-      ctx.fillStyle = "#081014";
-      ctx.font = weapons.length > 45 ? "700 13px sans-serif" : "800 16px sans-serif";
-      ctx.textAlign = "right";
-      ctx.textBaseline = "middle";
-      ctx.fillText(shortName(weapon.name), radius - 18, 0);
+      ctx.shadowColor = "rgba(255, 255, 255, 0.9)";
+      ctx.shadowBlur = 24;
+      ctx.strokeStyle = "#ffffff";
+      ctx.lineWidth = 8;
+      ctx.stroke();
       ctx.restore();
     }
+
+    ctx.save();
+    ctx.rotate(start + slice / 2);
+    ctx.fillStyle = "#081014";
+    ctx.font = wheelLabelFont(weapons.length);
+    ctx.textAlign = "right";
+    ctx.textBaseline = "middle";
+    ctx.fillText(shortName(weapon.name, weapons.length), radius - 18, 0);
+    ctx.restore();
   });
 
   ctx.beginPath();
@@ -376,8 +725,17 @@ function drawWheel(weapons) {
   ctx.restore();
 }
 
-function shortName(name) {
-  return name.length > 22 ? `${name.slice(0, 20)}...` : name;
+function wheelLabelFont(count) {
+  if (count > 130) return "800 8px sans-serif";
+  if (count > 90) return "800 9px sans-serif";
+  if (count > 60) return "800 11px sans-serif";
+  if (count > 36) return "800 13px sans-serif";
+  return "850 16px sans-serif";
+}
+
+function shortName(name, count = 0) {
+  const maxLength = count > 130 ? 15 : count > 90 ? 17 : count > 60 ? 20 : 24;
+  return name.length > maxLength ? `${name.slice(0, maxLength - 2)}...` : name;
 }
 
 function shade(hex, amount) {
@@ -400,6 +758,8 @@ function spin() {
   const weapons = pool();
   if (state.spinning || weapons.length === 0) return;
 
+  ensureAudio();
+  state.highlightId = null;
   const winner = pickWeapon(weapons);
   const winnerIndex = weapons.findIndex((weapon) => weapon.id === winner.id);
   const slice = (Math.PI * 2) / weapons.length;
@@ -412,6 +772,7 @@ function spin() {
   const started = performance.now();
 
   state.spinning = true;
+  state.lastTickIndex = null;
   spinButton.disabled = true;
   spinButton.textContent = "转动中";
 
@@ -419,14 +780,17 @@ function spin() {
     const t = Math.min(1, (now - started) / duration);
     const eased = 1 - Math.pow(1 - t, 4);
     state.rotation = start + (end - start) * eased;
+    tickIfNeeded(weapons.length);
     drawWheel(weapons);
     if (t < 1) {
       requestAnimationFrame(frame);
     } else {
       state.rotation = normalizeRadians(end);
       state.spinning = false;
+      state.highlightId = winner.id;
       spinButton.textContent = "再抽";
       showResult(winner);
+      playWin();
       updateMeta();
       drawWheel(pool());
     }
@@ -442,13 +806,83 @@ function normalizeRadians(value) {
 function showResult(weapon) {
   state.currentWeapon = weapon;
   resultName.textContent = weapon.name;
-  resultMeta.textContent = `${weapon.categoryLabel} · ID ${weapon.id}`;
+  resultMeta.textContent = `${weapon.categoryLabel} · ID ${weapon.id} · 当前池子 ${pool().length} 把`;
+  renderKit(weapon);
   imageFallback.textContent = weapon.name.slice(0, 1);
   resultImage.src = weapon.image;
   resultImage.alt = weapon.name;
   state.history.unshift(weapon);
   state.history = state.history.slice(0, 8);
   renderHistory();
+  flashResult();
+}
+
+function renderKit(weapon) {
+  kitDisplay.innerHTML = "";
+  if (!weapon.kit) {
+    kitDisplay.innerHTML = `<span class="kit-chip missing">套装数据待补全</span>`;
+    return;
+  }
+  const subName = subWeapons[weapon.kit.sub];
+  const specialName = specialWeapons[weapon.kit.special];
+  kitDisplay.append(kitChip("副武器", subName, `${SUB_ASSET_BASE}/${weapon.kit.sub}.avif`));
+  kitDisplay.append(kitChip("大招", specialName, `${SPECIAL_ASSET_BASE}/${weapon.kit.special}.avif`));
+}
+
+function kitChip(label, name, src) {
+  const chip = document.createElement("span");
+  chip.className = "kit-chip";
+  chip.innerHTML = `<img src="${src}" alt="" /><span>${label}: ${name}</span>`;
+  return chip;
+}
+
+function flashResult() {
+  const panel = document.querySelector(".wheel-panel");
+  const result = document.querySelector(".result");
+  panel.classList.remove("flash");
+  result.classList.remove("hit");
+  void panel.offsetWidth;
+  panel.classList.add("flash");
+  result.classList.add("hit");
+}
+
+function ensureAudio() {
+  if (!state.soundEnabled) return;
+  if (!state.audioContext) {
+    state.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  if (state.audioContext.state === "suspended") state.audioContext.resume();
+}
+
+function playTone(frequency, duration, volume = 0.035, type = "square") {
+  if (!state.soundEnabled || !state.audioContext) return;
+  const now = state.audioContext.currentTime;
+  const oscillator = state.audioContext.createOscillator();
+  const gain = state.audioContext.createGain();
+  oscillator.type = type;
+  oscillator.frequency.setValueAtTime(frequency, now);
+  gain.gain.setValueAtTime(volume, now);
+  gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+  oscillator.connect(gain);
+  gain.connect(state.audioContext.destination);
+  oscillator.start(now);
+  oscillator.stop(now + duration);
+}
+
+function tickIfNeeded(weaponCount) {
+  if (!state.soundEnabled || weaponCount === 0) return;
+  const slice = (Math.PI * 2) / weaponCount;
+  const pointerAngle = normalizeRadians(Math.PI * 2 - normalizeRadians(state.rotation));
+  const index = Math.floor(pointerAngle / slice);
+  if (index !== state.lastTickIndex) {
+    state.lastTickIndex = index;
+    playTone(420 + Math.min(260, weaponCount), 0.028, 0.018);
+  }
+}
+
+function playWin() {
+  playTone(660, 0.08, 0.045, "triangle");
+  window.setTimeout(() => playTone(990, 0.13, 0.04, "triangle"), 82);
 }
 
 function renderHistory() {
@@ -461,7 +895,10 @@ function renderHistory() {
   }
   for (const weapon of state.history) {
     const item = document.createElement("li");
-    item.innerHTML = `<strong>${weapon.name}</strong> <span>${weapon.categoryLabel}</span>`;
+    const kit = weapon.kit
+      ? ` · ${subWeapons[weapon.kit.sub]} + ${specialWeapons[weapon.kit.special]}`
+      : "";
+    item.innerHTML = `<strong>${weapon.name}</strong> <span>${weapon.categoryLabel}${kit}</span>`;
     historyEl.append(item);
   }
 }
@@ -469,11 +906,7 @@ function renderHistory() {
 document.querySelector("#selectAll").addEventListener("click", () => {
   const allSelected = state.selectedCategories.size === categories.length;
   state.selectedCategories = new Set(allSelected ? [] : categories.map((category) => category.name));
-  categoryFilters.querySelectorAll("input").forEach((input) => {
-    input.checked = !allSelected;
-  });
-  drawWheel(pool());
-  updateMeta();
+  refreshControls();
 });
 
 document.querySelector("#clearHistory").addEventListener("click", () => {
@@ -483,12 +916,30 @@ document.querySelector("#clearHistory").addEventListener("click", () => {
 
 hideBrandedWeapons.addEventListener("change", () => {
   state.hideBrandedWeapons = hideBrandedWeapons.checked;
-  drawWheel(pool());
-  updateMeta();
+  refreshControls();
+});
+
+soundEnabled.addEventListener("change", () => {
+  state.soundEnabled = soundEnabled.checked;
 });
 
 avoidRepeat.addEventListener("change", () => {
   state.avoidRepeat = avoidRepeat.checked;
+});
+
+weaponSearch.addEventListener("input", () => {
+  state.search = weaponSearch.value;
+  renderFilters();
+});
+
+document.querySelector("#includeVisible").addEventListener("click", () => {
+  state.enabledWeapons = new Set([...state.enabledWeapons, ...visibleWeaponIds()]);
+  refreshControls();
+});
+
+document.querySelector("#excludeVisible").addEventListener("click", () => {
+  for (const id of visibleWeaponIds()) state.enabledWeapons.delete(id);
+  refreshControls();
 });
 
 resultImage.addEventListener("error", () => {
