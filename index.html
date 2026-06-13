@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>斯普拉遁 3 随机武器转盘</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="wheel-panel" aria-labelledby="title">
+        <div class="heading">
+          <p class="eyebrow">Splatoon 3 Weapon Roulette</p>
+          <h1 id="title">随机武器转盘</h1>
+        </div>
+
+        <div class="wheel-wrap">
+          <div class="pointer" aria-hidden="true"></div>
+          <canvas id="wheel" width="760" height="760" aria-label="武器转盘"></canvas>
+          <button id="spinButton" class="spin-button" type="button">
+            开始
+          </button>
+        </div>
+
+        <div class="result" aria-live="polite">
+          <div class="weapon-art">
+            <img id="resultImage" alt="" />
+            <span id="imageFallback">?</span>
+          </div>
+          <div>
+            <p class="result-label">抽到</p>
+            <h2 id="resultName">按“开始”抽一把武器</h2>
+            <p id="resultMeta">当前池子包含 0 把武器</p>
+          </div>
+        </div>
+      </section>
+
+      <aside class="controls" aria-label="转盘设置">
+        <section class="control-section">
+          <div class="section-title">
+            <h2>武器池</h2>
+            <button id="selectAll" type="button">全选</button>
+          </div>
+          <div id="categoryFilters" class="category-grid"></div>
+        </section>
+
+        <section class="control-section compact">
+          <label class="toggle">
+            <input id="hideBrandedWeapons" type="checkbox" />
+            <span>隐藏贴牌武器</span>
+          </label>
+          <label class="toggle">
+            <input id="avoidRepeat" type="checkbox" checked />
+            <span>尽量不连续抽到同一把</span>
+          </label>
+        </section>
+
+        <section class="control-section">
+          <div class="section-title">
+            <h2>最近结果</h2>
+            <button id="clearHistory" type="button">清空</button>
+          </div>
+          <ol id="history" class="history"></ol>
+        </section>
+
+        <p class="credit">
+          武器名称和贴图路径来自
+          <a href="https://github.com/sendou-ink/sendou.ink" target="_blank" rel="noreferrer">sendou.ink</a>
+          的公开仓库。
+        </p>
+      </aside>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
